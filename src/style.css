@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Roboto", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 1fr 10fr 0.5fr;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.content {
+    gap: 1rem;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: red;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+#search {
+    border-radius: 10px;
+    width: 20rem;
+    border: 1px solid black;
+}
+
+/* stylings for the weekly forecast */
+
+.weekly-weather {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background-color: white;
+    width: 99%;
+    padding: 5px;
+    height: 25%;
+    border-radius: 1rem;
+    gap: 6px
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    height: 95%;
+    font-size: 1.4rem;
+    text-align: center;
+    border-radius: 8px;
+    gap: 6px;
+}
+
+.weather-icon {
+    border: 1px solid black;
+    height: 55%;
+}
+
+.temp-container {
+    border: 1px solid black ;
+}
+
+.temp {
+    font-size: 18px;
+}
+
+.today-weather {
+    border-radius: 1rem;
+    background-color: white;
+    display: flex;
+    width: 40%;
+    height: 60%;
+}
