@@ -9,58 +9,18 @@
     <div class="container">
       <header class="header">Weather App</header>
       <div class="content">
-        <input type="text" name="search" id="search" placeholder="search..." />
-        <div class="weekly-weather">
-          <div class="day" id="monday">
-            <p>Monday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="tuesday">
-            <p>Tuesday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="wednesday">
-            <p>Wednesday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="thursday">
-            <p>Thursday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="friday">
-            <p>Friday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="saturday">
-            <p>Saturday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="sunday">
-            <p>Sunday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
+        <div class="input-container">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="search..."
+          />
+          <label for="ms2" alt="fahrenheit or celcius">F°/C°</label>
+          <input type="checkbox" role="switch" id="ms2" />
         </div>
+
+        <div class="weekly-weather" id="weekly-weather"></div>
         <div class="today-weather">
           <div class="hourly-weather" id="first">
             <div class="time"></div>

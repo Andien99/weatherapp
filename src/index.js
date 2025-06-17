@@ -1,5 +1,3 @@
 import "./style.css";
-import { getLocation } from "./getGeoLocation";
-import { getWeather } from "./getWeatherData";
-
+import { getLocation } from "./getUserGeoLocation";
 getLocation();
