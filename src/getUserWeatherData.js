@@ -1,4 +1,6 @@
 import { createWeeklyForecast } from "./createWeeklyWeather";
+import { createHourlyForecast } from "./createHourlyWeather";
+import { getHours } from "date-fns";
 async function getWeather(city, country) {
   console.log("User city is " + city + " and country is " + country);
   try {
@@ -8,9 +10,9 @@ async function getWeather(city, country) {
     );
     const weather = await response.json();
     WeeklyForecast(weather);
-    // HourlyForecast(weather);
+    HourlyForecast(weather);
   } catch (err) {
-    alert("getWeather() Error:" + err);
+    console.error(err);
   }
 }
 
@@ -22,9 +24,14 @@ function WeeklyForecast(weather) {
   createWeeklyForecast(weeklyData);
 }
 
-// function HourlyForecast(weather) {
-//   console.log(weather.days[0].hours);
-//   let hourlyWeather = weather.days;
-// }
+function HourlyForecast(weather) {
+  let hourlyData = [];
+  let currentTime = new Date();
+  getHours(currentTime);
+  for (let i = 0; i < 12; i++) {
+    hourlyData.push(weather.days[0].hours[i + getHours(currentTime)]);
+  }
+  createHourlyForecast(hourlyData);
+}
 
 export { getWeather };
