@@ -87,6 +87,10 @@
   gap: 6px;
 }
 
+.day:hover {
+  background-color: whitesmoke;
+}
+
 .weather-icon {
   height: 55%;
 }
@@ -105,10 +109,11 @@
 .today-weather {
   align-items: center;
   border-radius: 1rem;
-  background-color: rgb(215, 212, 212);
+  background-color: whitesmoke;
   display: grid;
   grid-template-rows: repeat(12, 1fr);
   width: 30vw;
+  min-width: 500px;
   max-width: 550px;
   min-height: 600px;
   height: 70%;
@@ -116,7 +121,7 @@
 
 .hourly-weather {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 1fr 0.5fr 1fr 1fr 1fr;
   font-size: 1.5rem;
 }
 

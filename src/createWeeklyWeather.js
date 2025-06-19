@@ -1,9 +1,10 @@
 import { getDay } from "date-fns";
+import { convertToCel, convertToFah } from "./convertUnits";
+const toggleDegrees = document.getElementById("ms2");
 const weeklyWeatherContainer = document.getElementById("weekly-weather");
 
 function createWeeklyForecast(weather) {
   let cityWeather = weather;
-  console.log(cityWeather);
   for (let i = 0; i < 7; i++) {
     //Basic day elements
     let dayContainer = document.createElement("div");
@@ -42,10 +43,25 @@ function createWeeklyForecast(weather) {
     //Integrate the weekly data to the Nodes
     dayLabel.textContent = thisDay;
     dayTemp.textContent =
-      cityWeather[i].tempmax + "°" + " / " + cityWeather[i].tempmin + "°";
+      Math.round(cityWeather[i].tempmax) +
+      "°" +
+      " / " +
+      Math.round(cityWeather[i].tempmin) +
+      "°";
+
+    //stores dayTemp value in the toggle button event listener
+    toggleDegrees.addEventListener("click", () => {
+      let newTempLabel = dayTemp;
+      let thisTempMin = cityWeather[i].tempmin;
+      let thisTempMax = cityWeather[i].tempmax;
+      if (toggleDegrees.checked === true) {
+        newTempLabel.textContent = convertToCel(thisTempMin, thisTempMax);
+      } else if (toggleDegrees.checked === false) {
+        newTempLabel.textContent = convertToFah(thisTempMin, thisTempMax);
+      }
+    });
   }
 }
-
 function convertDay(day) {
   const daysOfWeek = [
     "Sunday",

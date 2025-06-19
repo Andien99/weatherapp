@@ -8,12 +8,6 @@ function getLocation() {
 }
 
 async function success(position) {
-  console.log(
-    "Latitude: " +
-      position.coords.latitude +
-      " Longitude: " +
-      position.coords.longitude
-  );
   await fetch("https://ipapi.co/json")
     .then(function (response) {
       response.json().then((jsonData) => {

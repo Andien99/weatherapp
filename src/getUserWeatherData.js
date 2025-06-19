@@ -2,7 +2,6 @@ import { createWeeklyForecast } from "./createWeeklyWeather";
 import { createHourlyForecast } from "./createHourlyWeather";
 import { getHours } from "date-fns";
 async function getWeather(city, country) {
-  console.log("User city is " + city + " and country is " + country);
   try {
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city},${country}?key=DJ8W563LE494DK5TTRSABLW5U`,

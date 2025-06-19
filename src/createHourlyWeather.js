@@ -1,8 +1,8 @@
+import { convertToCel, convertToFah } from "./convertUnits";
 const hourlyWeatherContainer = document.getElementById("today-weather");
-
+const toggleDegrees = document.getElementById("ms2");
 function createHourlyForecast(weather) {
   let hourlyWeather = weather;
-  console.log(hourlyWeather);
   for (let i = 0; i < 12; i++) {
     //basic hourly elements
     let hourContainer = document.createElement("div");
@@ -50,9 +50,19 @@ function createHourlyForecast(weather) {
     }
     //Integrating data to the Nodes
     hourTime.textContent = reformattedTime;
-    hourTemp.textContent = hourlyWeather[i].temp + "°";
+    hourTemp.textContent = Math.round(hourlyWeather[i].temp) + "°";
     hourWind.textContent = hourlyWeather[i].windspeed + " kmph";
     hourUV.textContent = "UV " + hourlyWeather[i].uvindex;
+    //stores dayTemp value in the toggle button event listener
+    toggleDegrees.addEventListener("click", () => {
+      let newTempLabel = hourTemp;
+      let thisTemp = hourlyWeather[i].temp;
+      if (toggleDegrees.checked === true) {
+        newTempLabel.textContent = convertToCel(thisTemp);
+      } else if (toggleDegrees.checked === false) {
+        newTempLabel.textContent = convertToFah(thisTemp);
+      }
+    });
   }
 }
 
