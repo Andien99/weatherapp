@@ -28,8 +28,16 @@ function HourlyForecast(weather) {
   let currentTime = new Date();
   getHours(currentTime);
   for (let i = 0; i < 12; i++) {
-    hourlyData.push(weather.days[0].hours[i + getHours(currentTime)]);
+    if (weather.days[0].hours[i + getHours(currentTime)] == undefined) {
+      let remainingHours = 12 - i;
+      for (let j = 0; j < remainingHours; j++) {
+        hourlyData.push(weather.days[1].hours[j]);
+      }
+    } else {
+      hourlyData.push(weather.days[0].hours[i + getHours(currentTime)]);
+    }
   }
+  console.log(hourlyData);
   createHourlyForecast(hourlyData);
 }
 

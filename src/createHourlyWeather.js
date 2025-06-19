@@ -53,7 +53,7 @@ function createHourlyForecast(weather) {
     hourTemp.textContent = Math.round(hourlyWeather[i].temp) + "°";
     hourWind.textContent = hourlyWeather[i].windspeed + " kmph";
     hourUV.textContent = "UV " + hourlyWeather[i].uvindex;
-    //stores dayTemp value in the toggle button event listener
+    //stores hourTemp value in the toggle button event listener
     toggleDegrees.addEventListener("click", () => {
       let newTempLabel = hourTemp;
       let thisTemp = hourlyWeather[i].temp;
