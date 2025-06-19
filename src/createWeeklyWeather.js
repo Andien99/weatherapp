@@ -5,6 +5,7 @@ const weeklyWeatherContainer = document.getElementById("weekly-weather");
 
 function createWeeklyForecast(weather) {
   let cityWeather = weather;
+  console.log(cityWeather[0]);
   for (let i = 0; i < 7; i++) {
     //Basic day elements
     let dayContainer = document.createElement("div");

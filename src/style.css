@@ -8,8 +8,7 @@
 
 .container {
   display: grid;
-  height: 100vh;
-  grid-template-rows: 1fr 10fr 0.5fr;
+  grid-template-rows: 100px 1fr;
 }
 
 .header {
@@ -36,6 +35,26 @@
   border-radius: 10px;
   font-size: 1.5rem;
   padding-left: 5px;
+
+  /* Glass effects */
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#search::placeholder {
+  color: white;
+  font-size: 22px;
+  font-style: italic;
+  padding-left: 5px;
+}
+
+#search:hover {
+  background: rgba(255, 255, 255, 0.479);
 }
 
 .content {
@@ -44,7 +63,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #05299e;
+  justify-content: flex-start;
+  background-color: #2a2a2a;
 }
 
 .footer {
@@ -73,6 +93,17 @@
   gap: 1rem;
 }
 
+.weekly-weather > div {
+  padding-top: 0.3rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 .day {
   display: flex;
   background-color: white;
@@ -88,7 +119,7 @@
 }
 
 .day:hover {
-  background-color: whitesmoke;
+  background: rgba(255, 255, 255, 0.479);
 }
 
 .weather-icon {
@@ -106,23 +137,37 @@
   font-size: 1.5rem;
 }
 
+/* Stylings for the day forcast */
+
+.today-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  width: clamp(1400px, 70vw, 2000px);
+  height: 50rem;
+}
+
 .today-weather {
+  color: white;
   align-items: center;
-  border-radius: 1rem;
-  background-color: whitesmoke;
   display: grid;
   grid-template-rows: repeat(12, 1fr);
-  width: 30vw;
-  min-width: 500px;
-  max-width: 550px;
-  min-height: 600px;
-  height: 70%;
+  grid-column: 2 / span 3;
+  grid-row: 1 / span 2;
+  /* glass effect */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .hourly-weather {
   display: grid;
   grid-template-columns: 1fr 0.5fr 1fr 1fr 1fr;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .hourly-weather > * {
@@ -130,13 +175,92 @@
   justify-self: center;
 }
 
-/* 
-.hourly-weather > div {
-  border: 1px solid black;
-} */
-
 .hourly-icon {
   height: 3.5rem;
+}
+
+.today-info {
+  color: white;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 1rem;
+  /* glass effect */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.location {
+  font-size: 3.3rem;
+}
+
+.today-date {
+  font-size: 2.3rem;
+}
+
+.description {
+  font-size: 1.7rem;
+}
+
+.content2 {
+  max-height: 15em;
+  display: flex;
+  flex-direction: column;
+}
+
+.content2 > img {
+  position: relative;
+  top: -20%;
+}
+
+.temp-info {
+  display: flex;
+  position: relative;
+  top: -50%;
+  align-self: center;
+  gap: 1rem;
+}
+
+.today-temp {
+  font-size: 3.5rem;
+}
+
+.today-temp2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content3 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-column: 1 / span 2;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.content3 > div {
+  /* glass effect */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.activitysugg {
+  /* glass effect */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* toggle switch styling*/

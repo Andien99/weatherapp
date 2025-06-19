@@ -37,7 +37,6 @@ function HourlyForecast(weather) {
       hourlyData.push(weather.days[0].hours[i + getHours(currentTime)]);
     }
   }
-  console.log(hourlyData);
   createHourlyForecast(hourlyData);
 }
 
