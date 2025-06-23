@@ -1,4 +1,5 @@
 import { convertToCel, convertToFah } from "./convertUnits";
+import { fetchIcon } from "../fetchIcon";
 const hourlyWeatherContainer = document.getElementById("today-weather");
 const toggleDegrees = document.getElementById("ms2");
 function createHourlyForecast(weather) {
@@ -35,24 +36,16 @@ function createHourlyForecast(weather) {
       reformattedTime = reformattedTime + "AM";
     }
     //Gets animated SVG to match weather description
-    fetchIcon(hourlyWeather[i].icon);
-    async function fetchIcon(icon) {
-      //fetches the appropriate SVG from bmcdn.nl/assets
-      try {
-        let response = await fetch(
-          `https://bmcdn.nl/assets/weather-icons/v2.0/fill/${icon}.svg`,
-          { mode: "cors" }
-        );
-        hourIcon.setAttribute("src", response.url);
-      } catch (err) {
-        throw Error(err);
-      }
-    }
+    fetchIcon(hourlyWeather[i].icon).then((weatherIcon) => {
+      let thisIcon = weatherIcon.url;
+      hourIcon.setAttribute("src", thisIcon);
+    });
     //Integrating data to the Nodes
     hourTime.textContent = reformattedTime;
     hourTemp.textContent = Math.round(hourlyWeather[i].temp) + "°";
     hourWind.textContent = hourlyWeather[i].windspeed + " kmph";
     hourUV.textContent = "UV " + hourlyWeather[i].uvindex;
+
     //stores hourTemp value in the toggle button event listener
     toggleDegrees.addEventListener("click", () => {
       let newTempLabel = hourTemp;

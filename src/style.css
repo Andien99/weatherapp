@@ -7,8 +7,6 @@
 }
 
 .container {
-  display: grid;
-  grid-template-rows: 100px 1fr;
 }
 
 .header {
@@ -142,7 +140,7 @@
 .today-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1.5fr;
   gap: 1rem;
   width: clamp(1400px, 70vw, 2000px);
   height: 50rem;
@@ -183,7 +181,6 @@
   color: white;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr;
   padding: 1rem;
   /* glass effect */
   background: rgba(255, 255, 255, 0.2);
@@ -214,7 +211,7 @@
 
 .content2 > img {
   position: relative;
-  top: -20%;
+  top: -30%;
 }
 
 .temp-info {

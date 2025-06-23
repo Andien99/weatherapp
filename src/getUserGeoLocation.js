@@ -11,10 +11,8 @@ async function success(position) {
   await fetch("https://ipapi.co/json")
     .then(function (response) {
       response.json().then((jsonData) => {
-        console.log(jsonData);
-        const city = jsonData.city;
-        const country = jsonData.country;
-        getWeather(city, country);
+        let GeoInfo = jsonData;
+        getWeather(GeoInfo);
       });
     })
     .catch(function (error) {

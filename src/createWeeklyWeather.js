@@ -1,11 +1,12 @@
 import { getDay } from "date-fns";
 import { convertToCel, convertToFah } from "./convertUnits";
+import { convertDay } from "./findDayDate";
+import { fetchIcon } from "../fetchIcon";
 const toggleDegrees = document.getElementById("ms2");
 const weeklyWeatherContainer = document.getElementById("weekly-weather");
 
 function createWeeklyForecast(weather) {
   let cityWeather = weather;
-  console.log(cityWeather[0]);
   for (let i = 0; i < 7; i++) {
     //Basic day elements
     let dayContainer = document.createElement("div");
@@ -28,19 +29,10 @@ function createWeeklyForecast(weather) {
     //Gets the name of today's date
     let thisDay = convertDay(cityWeather[i].datetime);
     //Gets animated SVG to match weather description
-    fetchIcon(cityWeather[i].icon);
-    async function fetchIcon(icon) {
-      //fetches the appropriate SVG from bmcdn.nl/assets
-      try {
-        let response = await fetch(
-          `https://bmcdn.nl/assets/weather-icons/v2.0/fill/${icon}.svg`,
-          { mode: "cors" }
-        );
-        dayWeatherIcon.setAttribute("src", response.url);
-      } catch (err) {
-        throw Error(err);
-      }
-    }
+    fetchIcon(cityWeather[i].icon).then((weatherIcon) => {
+      let thisIcon = weatherIcon.url;
+      dayWeatherIcon.setAttribute("src", thisIcon);
+    });
     //Integrate the weekly data to the Nodes
     dayLabel.textContent = thisDay;
     dayTemp.textContent =
@@ -60,20 +52,9 @@ function createWeeklyForecast(weather) {
       } else if (toggleDegrees.checked === false) {
         newTempLabel.textContent = convertToFah(thisTempMin, thisTempMax);
       }
+      //add button that will change weather hour and today weather accordingly
     });
   }
-}
-function convertDay(day) {
-  const daysOfWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  return daysOfWeek[getDay(day)];
 }
 
 export { createWeeklyForecast };

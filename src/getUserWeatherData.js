@@ -1,7 +1,10 @@
 import { createWeeklyForecast } from "./createWeeklyWeather";
 import { createHourlyForecast } from "./createHourlyWeather";
+import { createTodayInfo } from "./createTodayInfo";
 import { getHours } from "date-fns";
-async function getWeather(city, country) {
+async function getWeather(geodata) {
+  let city = geodata.city;
+  let country = geodata.country;
   try {
     const response = await fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city},${country}?key=DJ8W563LE494DK5TTRSABLW5U`,
@@ -10,6 +13,7 @@ async function getWeather(city, country) {
     const weather = await response.json();
     WeeklyForecast(weather);
     HourlyForecast(weather);
+    TodayWeather(weather, geodata);
   } catch (err) {
     console.error(err);
   }
@@ -38,6 +42,11 @@ function HourlyForecast(weather) {
     }
   }
   createHourlyForecast(hourlyData);
+}
+
+function TodayWeather(weather, geodata) {
+  let todayWeather = weather.days[0];
+  createTodayInfo(todayWeather, geodata);
 }
 
 export { getWeather };
