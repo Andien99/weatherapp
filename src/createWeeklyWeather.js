@@ -2,6 +2,7 @@ import { getDay } from "date-fns";
 import { convertToCel, convertToFah } from "./convertUnits";
 import { convertDay } from "./findDayDate";
 import { fetchIcon } from "../fetchIcon";
+import { todayInfo } from "./createTodayInfo";
 const toggleDegrees = document.getElementById("ms2");
 const weeklyWeatherContainer = document.getElementById("weekly-weather");
 
@@ -52,7 +53,13 @@ function createWeeklyForecast(weather) {
       } else if (toggleDegrees.checked === false) {
         newTempLabel.textContent = convertToFah(thisTempMin, thisTempMax);
       }
-      //add button that will change weather hour and today weather accordingly
+    });
+
+    //add button that will change weather hour and today weather accordingly
+    dayContainer.addEventListener("click", () => {
+      const thisDayInfo = cityWeather[i];
+      todayInfo.reset();
+      todayInfo.create(thisDayInfo);
     });
   }
 }

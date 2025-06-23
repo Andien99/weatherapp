@@ -1,6 +1,6 @@
 import { createWeeklyForecast } from "./createWeeklyWeather";
 import { createHourlyForecast } from "./createHourlyWeather";
-import { createTodayInfo } from "./createTodayInfo";
+import { todayInfo } from "./createTodayInfo";
 import { getHours } from "date-fns";
 async function getWeather(geodata) {
   let city = geodata.city;
@@ -46,7 +46,7 @@ function HourlyForecast(weather) {
 
 function TodayWeather(weather, geodata) {
   let todayWeather = weather.days[0];
-  createTodayInfo(todayWeather, geodata);
+  todayInfo.create(todayWeather, geodata);
 }
 
 export { getWeather };
