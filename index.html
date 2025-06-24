@@ -7,148 +7,27 @@
   <script defer src="main.js"></script></head>
   <body>
     <div class="container">
-      <header class="header">Weather App</header>
       <div class="content">
-        <input type="text" name="search" id="search" placeholder="search..." />
-        <div class="weekly-weather">
-          <div class="day" id="monday">
-            <p>Monday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
+        <div class="input-container">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="search..."
+          />
+          <label for="ms2" alt="fahrenheit or celcius">F°/C°</label>
+          <input type="checkbox" role="switch" id="ms2" />
+        </div>
+        <div class="weekly-weather" id="weekly-weather"></div>
+        <div class="today-container">
+          <div class="today-info" id="today-info">
           </div>
-          <div class="day" id="tuesday">
-            <p>Tuesday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="wednesday">
-            <p>Wednesday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="thursday">
-            <p>Thursday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="friday">
-            <p>Friday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="saturday">
-            <p>Saturday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
-          </div>
-          <div class="day" id="sunday">
-            <p>Sunday</p>
-            <div class="weather-icon">Weather Icon</div>
-            <div class="temp-container">
-              <div class="temp">temperature</div>
-            </div>
+          <div class="today-weather" id="today-weather"></div>
+          <div class="activitysugg" id="activitysugg">
+            <h1>No idea what to put here so here is a gif of a cat</h1>
+            <!-- <img src="" alt="" id="cat-gif"> -->
           </div>
         </div>
-        <div class="today-weather">
-          <div class="hourly-weather" id="first">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="second">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="third">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="fourth">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="fifth">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="sixth">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="seventh">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="eighth">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="nineth">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="tenth">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="eleventh">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-          <div class="hourly-weather" id="twelveth">
-            <div class="time"></div>
-            <div class="hourly-icon"></div>
-            <div class="hourly-temp"></div>
-            <div class="hourly-wind"></div>
-            <div class="hourly-humidity"></div>
-          </div>
-        </div>
-      </div>
-      <div class="footer">Github: Andien99@github.com</div>
     </div>
   </body>
 </html>
