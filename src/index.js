@@ -1,5 +1,11 @@
 import "./style.css";
 import { getLocation } from "./getUserGeoLocation";
+import { getWeather } from "./getUserWeatherData";
+import { getCatGif } from "./catGif";
 
-//toggle button converts F/C
 getLocation();
+getCatGif();
+const searchBar = document.getElementById("search");
+searchBar.addEventListener("change", () => {
+  getWeather(searchBar.value);
+});

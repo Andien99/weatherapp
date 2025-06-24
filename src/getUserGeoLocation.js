@@ -12,7 +12,8 @@ async function success(position) {
     .then(function (response) {
       response.json().then((jsonData) => {
         let GeoInfo = jsonData;
-        getWeather(GeoInfo);
+        console.log(GeoInfo.city);
+        getWeather(GeoInfo.city);
       });
     })
     .catch(function (error) {

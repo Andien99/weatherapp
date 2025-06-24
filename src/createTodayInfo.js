@@ -4,7 +4,7 @@ import { convertToCel } from "./convertUnits";
 const todayInfoContainer = document.getElementById("today-info");
 const toggleDegrees = document.getElementById("ms2");
 const todayInfo = (function () {
-  //create nodes
+  //globally scoped nodes
   let content1;
   let location;
   let todayDate;
@@ -16,14 +16,10 @@ const todayInfo = (function () {
   let todayTemp2Container;
   let todayMinMax;
   let feelsLike;
-  let thisCity;
-  let thisPostal;
-  let thisCountry;
+  let thisAddress;
   function create(weather, geodata = null) {
     if (geodata !== null) {
-      thisCity = geodata.city;
-      thisPostal = geodata.postal;
-      thisCountry = geodata.country;
+      thisAddress = geodata.resolvedAddress;
     }
 
     content1 = document.createElement("div");
@@ -65,27 +61,36 @@ const todayInfo = (function () {
     //find todays date info
     let thisDay = convertDay(weather.datetime);
     let thisMonth = convertMonth(weather.datetime);
-    //integrate element values into the NODES
+    //integrate weather values into the nodes
     if (geodata !== null) {
-      location.textContent =
-        geodata.city + ", " + geodata.postal + ", " + geodata.country;
+      location.textContent = geodata.resolvedAddress;
     } else {
-      location.textContent = thisCity + ", " + thisPostal + ", " + thisCountry;
+      location.textContent = thisAddress;
     }
     todayDate.textContent =
       thisDay + ", " + weather.datetime.slice(8, 10) + " " + thisMonth;
     todayDescription.textContent = weather.description;
     fetchIcon(todayWeather.icon).then((weatherIcon) => {
-      let thisIcon = weatherIcon.url;
-      todayIcon.setAttribute("src", thisIcon);
-      todayTemp.textContent = todayWeather.temp + "°";
-      todayMinMax.textContent =
-        "max: " +
-        todayWeather.tempmax +
-        "° min: " +
-        todayWeather.tempmin +
-        "° ";
-      feelsLike.textContent = "Feels like: " + todayWeather.feelslike + "° ";
+      todayIcon.setAttribute("src", weatherIcon.url);
+      if (toggleDegrees.checked == true) {
+        todayTemp.textContent = convertToCel(todayWeather.temp);
+        todayMinMax.textContent =
+          "max: " +
+          convertToCel(todayWeather.tempmax) +
+          " min: " +
+          convertToCel(todayWeather.tempmin);
+        feelsLike.textContent =
+          "Feels like: " + convertToCel(todayWeather.feelslike);
+      } else {
+        todayTemp.textContent = todayWeather.temp + "°";
+        todayMinMax.textContent =
+          "max: " +
+          todayWeather.tempmax +
+          "° min: " +
+          todayWeather.tempmin +
+          "° ";
+        feelsLike.textContent = "Feels like: " + todayWeather.feelslike + "° ";
+      }
     });
 
     //toggle button to convert units

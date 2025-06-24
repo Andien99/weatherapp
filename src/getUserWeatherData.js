@@ -1,18 +1,23 @@
-import { createWeeklyForecast } from "./createWeeklyWeather";
-import { createHourlyForecast } from "./createHourlyWeather";
+import { weeklyForecast } from "./createWeeklyWeather";
+import { hourlyForecast } from "./createHourlyWeather";
 import { todayInfo } from "./createTodayInfo";
 import { getHours } from "date-fns";
+const hourlyWeatherContainer = document.getElementById("today-weather");
 async function getWeather(geodata) {
-  let city = geodata.city;
-  let country = geodata.country;
+  let city = geodata;
   try {
     const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city},${country}?key=DJ8W563LE494DK5TTRSABLW5U`,
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=DJ8W563LE494DK5TTRSABLW5U`,
       { mode: "cors" }
     );
     const weather = await response.json();
+    if (hourlyWeatherContainer.children.length > 5) {
+      todayInfo.reset();
+      hourlyForecast.reset();
+      weeklyForecast.reset();
+    }
     WeeklyForecast(weather);
-    HourlyForecast(weather);
+    HourlyForecast(weather.days[1]);
     TodayWeather(weather, geodata);
   } catch (err) {
     console.error(err);
@@ -24,29 +29,22 @@ function WeeklyForecast(weather) {
   for (let i = 0; i < 7; i++) {
     weeklyData.push(weather.days[i]);
   }
-  createWeeklyForecast(weeklyData);
+  weeklyForecast.create(weeklyData);
 }
 
-function HourlyForecast(weather) {
+function HourlyForecast(thisday) {
   let hourlyData = [];
   let currentTime = new Date();
   getHours(currentTime);
-  for (let i = 0; i < 12; i++) {
-    if (weather.days[0].hours[i + getHours(currentTime)] == undefined) {
-      let remainingHours = 12 - i;
-      for (let j = 0; j < remainingHours; j++) {
-        hourlyData.push(weather.days[1].hours[j]);
-      }
-    } else {
-      hourlyData.push(weather.days[0].hours[i + getHours(currentTime)]);
-    }
+  for (let i = 0; i < 24; i++) {
+    hourlyData.push(thisday.hours[i]);
   }
-  createHourlyForecast(hourlyData);
+  hourlyForecast.create(hourlyData);
 }
 
-function TodayWeather(weather, geodata) {
+function TodayWeather(weather) {
   let todayWeather = weather.days[0];
-  todayInfo.create(todayWeather, geodata);
+  todayInfo.create(todayWeather, weather);
 }
 
 export { getWeather };
